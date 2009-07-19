@@ -61,17 +61,25 @@ namespace :mng do
     puts "Preparing generated directory for new files ..."
     cd 'generated' do
       KINDS.each do |kind|
-        if File.exists?(kind)
-          cd kind do
-            Dir.glob('*.' + kind).each do |file|
-              system("rm #{file}.old") if File.exists?(file + '.old')
-              system("mv #{file} #{file}.old")
+        if kind == 'html'
+          Dir.glob('*.' + kind).each do |file|
+            system("rm #{file}.old") if File.exists?(file + '.old')
+            system("mv #{file} #{file}.old")
+          end
+        else
+          if File.exists?(kind)
+            cd kind do
+              Dir.glob('*.' + kind).each do |file|
+                system("rm #{file}.old") if File.exists?(file + '.old')
+                system("mv #{file} #{file}.old")
+              end
             end
           end
         end
       end
     end
   end
+  
 end
 
 namespace :utils do
