@@ -1,5 +1,5 @@
 DEBUG = true
-KINDS = ['html', 'css', 'js', 'images']
+KINDS = ['html', 'css', 'js']
 
 namespace :setup do
   desc 'Generates all directories needed'
