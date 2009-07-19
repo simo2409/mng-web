@@ -72,3 +72,13 @@ namespace :mng do
     end
   end
 end
+
+namespace :utils do
+  task :generate_README_html_from_markdown do
+    require 'rubygems'
+    require 'RDiscount'
+    s = RDiscount.new(File.read('README.markdown'))
+    File.open('readme.html', 'w+') {|f| f.write(s.to_html) }
+    system("open readme.html")
+  end
+end
