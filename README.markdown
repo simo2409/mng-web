@@ -26,11 +26,12 @@ You have two main directories:
 
 Both these directories has inside some other directories (they are quite easy to understand):
 
-- 'html'  -> Where there are html files or .rb files that generates html files
+- 'html'  -> Where there are html files or .rb files that generates html files (in 'generated' there isn't this directory because html files must be in the root)
 - 'css'   -> Where there are css files or .rb files that generates css files
 - 'js'    -> Where there are javascript files or .rb files that generates javascript files
 
-When the script runs it looks in these directories looking for .rb files, it executes these files assuming that every .rb file will generate a file. So if the script finds in 'workdir/html' the script 'index.rb' it assumes that executing this script 'index.html' will be created. Another example, if the script finds in 'workdir/css' the file 'main.rb' it assumes that after its execution a file called 'main.css' will be available in the same directory.
+When the script runs it looks in these directories looking for .rb files, it executes these files assuming that every .rb file will generate a file. So if the script finds in 'workdir/js' the script 'application.rb' it assumes that executing this script 'application.js' will be created. Another example, if the script finds in 'workdir/css' the file 'main.rb' it assumes that after its execution a file called 'main.css' will be available in the same directory.
+The concept about html file is quite identical with the difference that in 'generated' there isn't 'html' directory. So if there is a script 'about.rb' the script executes it, assumes that it generates a 'about.html' in 'workdir/html' and copy it into 'generated' (not 'generated/html' as other examples).
 
 This allows the script to deduce everything necessary to generate everything.
 Do you have a static html that never changes? You can put this html file in the directory 'workdir/html' and the script simply will copy it to 'generated' directory.
