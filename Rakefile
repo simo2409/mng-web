@@ -1,4 +1,4 @@
-DEBUG = true
+DEBUG = false
 KINDS = ['html', 'css', 'js']
 GENERATED_PATH = File.expand_path('./generated')
 
@@ -9,7 +9,7 @@ namespace :setup do
       system("mkdir #{place}")
       cd place do
         KINDS.each do |kind|
-          system("mkdir #{kind}") if kind != 'html' && place == GENERATED_PATH
+          system("mkdir #{kind}") unless (kind == 'html' && place == GENERATED_PATH)
         end
       end
     end
