@@ -1,4 +1,5 @@
 DEBUG = false
+PRESERVE_PREVIOUS_PROCESS = false
 KINDS = ['html', 'css', 'js']
 GENERATED_PATH = File.expand_path('./generated')
 
@@ -65,19 +66,19 @@ namespace :mng do
   desc 'Renames all files in generated to allow new files to be copied in it'
   task :clean_generated do
     puts "Preparing generated directory for new files ..."
-    cd 'generated' do
+    cd GENERATED_PATH do
       KINDS.each do |kind|
         if kind == 'html'
           Dir.glob('*.' + kind).each do |file|
             system("rm #{file}.old") if File.exists?(file + '.old')
-            system("mv #{file} #{file}.old")
+            system("mv #{file} #{file}.old") if PRESERVE_PREVIOUS_PROCESS
           end
         else
           if File.exists?(kind)
             cd kind do
               Dir.glob('*.' + kind).each do |file|
                 system("rm #{file}.old") if File.exists?(file + '.old')
-                system("mv #{file} #{file}.old")
+                system("mv #{file} #{file}.old") if PRESERVE_PREVIOUS_PROCESS
               end
             end
           end
