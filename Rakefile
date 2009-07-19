@@ -47,7 +47,7 @@ namespace :mng do
             # Moving generated (and others) files to 'generated' directory
             Dir.glob("*.#{kind}") do |kind_file|
               print "Copying '#{kind}/#{kind_file}' ... " if DEBUG
-              if processed_files.includes?(kind_file)
+              if processed_files.include?(kind_file)
                 # Generated file, moves the generated file
                 system("mv ./#{kind_file} #{GENERATED_PATH}/#{(kind == 'html' ? '' : kind + '/')}#{kind_file}")
               else
