@@ -41,7 +41,7 @@ Do you need that your 'index.html' is generated? No problem, puts into 'workdir/
 ## How to use it?
 It's easy! First of all clone this repository with:
 
-git clone git@github.com:simo2409/mng-web.git
+git clone git://github.com/simo2409/mng-web.git
 
 then
 
