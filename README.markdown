@@ -38,6 +38,21 @@ Do you have a static html that never changes? You can put this html file in the 
 
 Do you need that your 'index.html' is generated? No problem, puts into 'workdir/html' your 'index.rb' script and it will be executed and the resulting page will be copy into 'generated' directory.
 
+## How to use it?
+It's easy! First of all clone this repository with:
+
+git clone git@github.com:simo2409/mng-web.git
+
+then
+
+cd mng-web
+
+Now you have to run the script to generate directories, just a simple
+
+rake setup:generate_directory_structure
+
+And now you can start writing your html (or ruby) where you need!
+
 ## To do
 mng-web has many things that have still to be done, this is a little list:
 
