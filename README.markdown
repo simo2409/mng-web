@@ -51,7 +51,7 @@ Now you have to run the script to generate directories, just a simple
 
 rake setup:generate_directory_structure
 
-And now you can start writing your html (or ruby) where you need!
+And now you can start writing your html (or ruby) where you need (in workdir directory)!
 
 ## To do
 mng-web has many things that have still to be done, this is a little list:
