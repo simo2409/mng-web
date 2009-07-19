@@ -1,14 +1,15 @@
 DEBUG = true
 KINDS = ['html', 'css', 'js']
+GENERATED_PATH = File.expand_path('./generated')
 
 namespace :setup do
   desc 'Generates all directories needed'
   task :generate_directory_structure do
-    ['workdir', 'generated'].each do |place|
+    ['workdir', GENERATED_PATH].each do |place|
       system("mkdir #{place}")
       cd place do
         KINDS.each do |kind|
-          system("mkdir #{kind}")
+          system("mkdir #{kind}") unless kind == 'html'
         end
       end
     end
@@ -24,7 +25,7 @@ namespace :mng do
       # Managing html files
       
       KINDS.each do |kind|
-        if File.exists?(kind)
+        if kind == 'html' || File.exists?(kind)
           processed_files = []
           puts "Managing #{kind} files ... "
           cd kind do
@@ -46,7 +47,7 @@ namespace :mng do
             # Moving generated (and others) files to 'generated' directory
             Dir.glob("*.#{kind}") do |kind_file|
               print "Copying '#{kind}/#{kind_file}' ... " if DEBUG
-              system("mv ./#{kind_file} ../../generated/#{kind}/#{kind_file}")
+              system("mv ./#{kind_file} #{GENERATED_PATH}/#{(kind == 'html' ? '' : kind + '/')}#{kind_file}")
               puts "DONE" if DEBUG
             end
           end
