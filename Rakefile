@@ -39,7 +39,7 @@ namespace :mng do
                 raise "There was an error during execution of '#{kind}/#{ruby_file}' script"
               end
               if File.exists?(file + '.' + kind)
-                processed_files << file
+                processed_files << file + '.' + kind
               else
                 raise "I can't find '#{kind}/#{file}.#{kind}' but I executed '#{kind}/#{ruby_file}'!"
               end
